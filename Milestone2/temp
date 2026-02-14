@@ -1,1 +1,76 @@
+🎤 1️⃣ Introduction – Milestone 2
 
+You can start like this:
+
+In Milestone 2, we enhanced our web crawler by converting it into a distributed architecture using RabbitMQ.
+Instead of running the crawler in a single process, we separated responsibilities into a Producer and multiple Workers using a message queue system.
+
+🎯 2️⃣ Drawbacks of Milestone 1
+
+Say this clearly:
+
+In Milestone 1, the crawler was a single-process crawler.
+It handled URL fetching, parsing, and link extraction sequentially.
+This caused several limitations:
+
+🔹 Drawbacks:
+
+No parallel processing
+
+Slow crawling speed
+
+No scalability
+
+If the process crashed, everything stopped
+
+Not suitable for large-scale crawling
+
+Then say:
+
+To overcome these limitations, we moved to a distributed system architecture in Milestone 2.
+
+🚀 3️⃣ How Milestone 2 Overcomes It
+
+Say:
+
+In Milestone 2, we introduced RabbitMQ as a message broker.
+The Producer pushes URLs into a queue, and multiple Workers consume URLs from the queue and process them independently.
+This enables distributed and parallel crawling.
+
+🐰 4️⃣ Basic Idea of RabbitMQ
+
+You can explain simply:
+
+RabbitMQ is a message broker that allows applications to communicate using message queues.
+It stores messages in a queue until a consumer processes them.
+
+Explain 3 components:
+
+Producer → Sends messages
+
+Queue → Stores messages
+
+Consumer (Worker) → Processes messages
+
+🏗 5️⃣ Architecture Explanation
+
+Say:
+
+The architecture consists of:
+
+A Producer that inserts seed URLs into the queue.
+
+RabbitMQ server that manages the queue.
+
+One or more Worker processes that consume URLs and crawl web pages.
+
+You can draw:
+
+Producer → RabbitMQ Queue → Worker 1
+                              Worker 2
+                              Worker 3
+
+
+Then say:
+
+RabbitMQ distributes messages among available workers using fair dispatch.
