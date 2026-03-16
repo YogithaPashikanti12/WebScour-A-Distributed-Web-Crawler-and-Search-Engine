@@ -1,55 +1,49 @@
 # WebScour-A-Distributed-Web-Crawler-and-Search-Engine
-WebScour – A Simple Search Engine
-Introduction
+# WebScour – A Simple Search Engine
 
-WebScour is a simple web-based search engine designed to demonstrate the fundamental concepts of information retrieval systems. The project crawls webpages, extracts useful textual information, builds an index of the content, and allows users to search for relevant documents through a web interface.
+## Introduction
 
-The system works by collecting HTML pages, processing their text, and constructing an inverted index that maps words to the documents in which they appear. When a user enters a search query, the system processes the query, retrieves relevant documents from the index, calculates relevance scores using the TF-IDF (Term Frequency–Inverse Document Frequency) method, and ranks the documents accordingly.
+**WebScour** is a simple web-based search engine developed to demonstrate the core concepts of information retrieval systems. The project collects web pages, processes their content, builds an inverted index, and allows users to search for relevant documents through a web interface.
 
-The backend of WebScour is implemented using Python and exposes search functionality through a REST API built with FastAPI. The server is run using Uvicorn. A simple HTML and JavaScript based user interface allows users to submit queries and view ranked search results.
+The system extracts text from HTML pages, performs preprocessing and tokenization, and constructs an inverted index that maps terms to the documents in which they appear. When a user enters a query, the system retrieves matching documents and ranks them using the **TF-IDF (Term Frequency–Inverse Document Frequency)** scoring technique.
 
-This project was developed as part of a milestone-based implementation of a search engine system, where each milestone focuses on a specific component such as crawling, indexing, and search functionality.
+The backend of the system is implemented using Python with FastAPI for building the REST API, and the server is run using Uvicorn. A simple HTML and JavaScript based interface allows users to enter queries and view ranked search results.
 
-Features
+This project demonstrates the working of a search engine pipeline including crawling, indexing, and query processing.
 
-Webpage crawling and HTML content extraction
+---
 
-Text preprocessing and tokenization
+## Features
 
-Inverted index creation
+- Webpage crawling and HTML content extraction  
+- Text preprocessing and tokenization  
+- Inverted index creation  
+- TF-IDF based document ranking  
+- REST API for query processing  
+- Interactive web interface for searching documents  
 
-TF-IDF based document ranking
+---
 
-REST API for query processing
+## Technologies Used
 
-Interactive web interface for searching documents
+- Python  
+- FastAPI  
+- Uvicorn  
+- HTML  
+- CSS  
+- JavaScript  
+- JSON  
 
-Technologies Used
+---
 
-Python
+## How It Works
 
-FastAPI
+1. Web pages are collected and stored locally.  
+2. Text is extracted from HTML pages and preprocessed.  
+3. An inverted index is created to map words to documents.  
+4. TF-IDF scores are calculated to measure document relevance.  
+5. The FastAPI backend provides a search API endpoint.  
+6. The user enters a query through the web interface.  
+7. The system retrieves and ranks relevant documents and displays the results.
 
-Uvicorn
 
-HTML
-
-CSS
-
-JavaScript
-
-JSON
-
-How It Works
-
-Web pages are collected and stored locally.
-
-Text is extracted and processed to build an inverted index.
-
-TF-IDF values are calculated for ranking documents.
-
-The FastAPI backend provides a search endpoint.
-
-The user enters a query through the web interface.
-
-The system retrieves and ranks relevant documents and displays the results.
