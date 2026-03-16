@@ -1,5 +1,4 @@
 # WebScour-A-Distributed-Web-Crawler-and-Search-Engine
-# WebScour – A Simple Search Engine
 
 ## Introduction
 
@@ -45,5 +44,13 @@ This project demonstrates the working of a search engine pipeline including craw
 5. The FastAPI backend provides a search API endpoint.  
 6. The user enters a query through the web interface.  
 7. The system retrieves and ranks relevant documents and displays the results.
+---
+## Execution Order
 
+1️⃣ RabbitMQ server
+2️⃣ python producer.py
+3️⃣ python worker.py
+4️⃣ python indexer.py
+5️⃣ uvicorn api:app --reload
+6️⃣ Open ui.html
 
