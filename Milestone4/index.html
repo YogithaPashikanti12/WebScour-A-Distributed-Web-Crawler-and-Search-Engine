@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>WebScour</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI", Roboto, Arial, sans-serif;
+    background:#0b0b0b;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden; /* Prevent page scroll */
+}
+
+/* Container */
+
+.container{
+    text-align:center;
+    width:100%;
+    max-width:700px;
+}
+
+/* Logo */
+
+.logo{
+    font-size:50px;
+    font-weight:600;
+    margin-bottom:45px;
+    letter-spacing:1px;
+}
+
+/* Search bar */
+
+.search-bar{
+    display:flex;
+    align-items:center;
+    background:#1a1a1a;
+    border:1px solid #3a3a3a;
+    border-radius:40px;
+    padding:12px 18px;
+    width:100%;
+    max-width:580px;
+    margin:auto;
+    box-shadow:0 0 20px rgba(255,255,255,0.05);
+    transition:all 0.2s ease;
+}
+
+.search-bar:hover{
+    border-color:#5f9cff;
+    box-shadow:0 0 25px rgba(95,156,255,0.35);
+}
+
+/* Search icon */
+
+.search-icon{
+    font-size:18px;
+    margin-right:10px;
+    color:#9aa0a6;
+}
+
+/* Input */
+
+.search-bar input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:16px;
+}
+
+/* Button */
+
+.search-bar button{
+    background:#4c8dff;
+    border:none;
+    color:white;
+    padding:9px 18px;
+    border-radius:20px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.search-bar button:hover{
+    background:#6aa3ff;
+}
+
+/* Query text */
+
+#queryText{
+    margin-top:30px;
+    color:#b0b0b0;
+}
+
+/* Results container */
+
+#results{
+    margin-top:20px;
+    text-align:left;
+    max-height:300px; /* fixed result area */
+    overflow-y:auto;  /* scrollbar only here */
+    padding-right:10px;
+}
+
+/* Result */
+
+.result{
+    padding:15px 5px;
+    border-bottom:1px solid #2a2a2a;
+}
+
+.result a{
+    color:#8ab4f8;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.result a:hover{
+    text-decoration:underline;
+}
+
+.result p{
+    margin-top:5px;
+    color:#bdbdbd;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">WebScour</div>
+
+<div class="search-bar">
+
+<div class="search-icon">🔍</div>
+
+<input type="text" id="query" placeholder="Search the web">
+
+<button onclick="search()">Search</button>
+
+</div>
+
+<h3 id="queryText"></h3>
+
+<div id="results"></div>
+
+</div>
+
+<script>
+
+async function search(){
+
+let q = document.getElementById("query").value;
+
+document.getElementById("queryText").innerHTML =
+"Search Results for: <b>" + q + "</b>";
+
+let response = await fetch("http://127.0.0.1:8000/search?q=" + q);
+
+let data = await response.json();
+
+let resultsDiv = document.getElementById("results");
+
+resultsDiv.innerHTML = "";
+
+data.forEach((item,index)=>{
+
+let div = document.createElement("div");
+
+div.className = "result";
+
+div.innerHTML =
+"<b>" + (index+1) + ". " + item.document + "</b>" +
+"<br>Score: " + item.score.toFixed(3);
+
+resultsDiv.appendChild(div);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
